@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        build(job: 'Checkout', propagate: true)
+        echo 'echo\'Build Started\' '
       }
     }
 
