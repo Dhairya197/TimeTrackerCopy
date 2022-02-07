@@ -3,14 +3,13 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'mvn build'
         withMaven(maven: '3.8.3')
+        git(url: 'https://github.com/Dhairya197/TimeTrackerCopy.git', branch: 'integration')
       }
     }
 
     stage('Checkout') {
       steps {
-        git(url: 'https://github.com/Dhairya197/TimeTrackerCopy.git', branch: 'integration')
         sh 'mvn compile'
         withMaven(maven: '3.8.3')
       }
