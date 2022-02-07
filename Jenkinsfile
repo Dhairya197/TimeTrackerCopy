@@ -10,7 +10,7 @@ pipeline {
     stage('Checkout') {
       steps {
         git(url: 'https://github.com/Dhairya197/TimeTrackerCopy.git', branch: 'integration')
-        withMaven(maven: 'maven3.8.3') {
+        withMaven(maven: 'Maven3.8.3') {
           sh 'mvn compile'
         }
 
