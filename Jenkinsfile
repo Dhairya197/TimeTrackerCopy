@@ -27,7 +27,6 @@ pipeline {
         stage('Reports') {
           steps {
             junit '**/*.xml'
-            withMaven(maven: '3.8.3')
           }
         }
 
