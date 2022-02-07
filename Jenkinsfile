@@ -19,8 +19,10 @@ pipeline {
 
     stage('Smoke tests') {
       steps {
-        withMaven(maven: '3.8.3')
-        sh 'mvn test'
+        withMaven(maven: '3.8.3') {
+          sh 'mvn test'
+        }
+
       }
     }
 
@@ -34,8 +36,10 @@ pipeline {
 
         stage('Regression Tests') {
           steps {
-            withMaven(maven: '3.8.3')
-            sh 'mvn test'
+            withMaven(maven: '3.8.3') {
+              sh 'mvn test'
+            }
+
           }
         }
 
