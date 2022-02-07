@@ -3,7 +3,6 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        withMaven(maven: '3.8.3')
         build(job: 'TimeTrackerCopy', wait: true, quietPeriod: 10)
       }
     }
