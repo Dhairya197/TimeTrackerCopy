@@ -4,21 +4,22 @@ pipeline {
     stage('build') {
       steps {
         withMaven(maven: '3.8.3')
-        git(url: 'https://github.com/Dhairya197/TimeTrackerCopy.git', branch: 'integration')
+        build(job: 'TimeTrackerCopy', wait: true, quietPeriod: 10)
       }
     }
 
     stage('Checkout') {
       steps {
-        sh 'mvn compile'
         withMaven(maven: '3.8.3')
+        git(url: 'https://github.com/Dhairya197/TimeTrackerCopy.git', branch: 'integration')
+        sh 'mvn complile'
       }
     }
 
     stage('Smoke tests') {
       steps {
-        sh 'mvn test'
         withMaven(maven: '3.8.3')
+        sh 'mvn test'
       }
     }
 
@@ -32,8 +33,8 @@ pipeline {
 
         stage('Regression Tests') {
           steps {
-            sh 'mvn test'
             withMaven(maven: '3.8.3')
+            sh 'mvn test'
           }
         }
 
