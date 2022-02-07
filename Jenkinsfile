@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        build(job: 'TimeTrackerCopy', wait: true, quietPeriod: 10)
+        build 'TimeTrackerCopy'
       }
     }
 
