@@ -3,13 +3,12 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        build 'Checkout'
+        build 'TimeTrackerCopy'
       }
     }
 
     stage('Checkout') {
       steps {
-        git(url: 'https://github.com/Dhairya197/TimeTrackerCopy.git', branch: 'integration')
         tool(name: 'Maven', type: 'Maven3.8.3')
         sh 'mvn complile'
       }
