@@ -35,7 +35,7 @@ pipeline {
 		
 		stage('Upload the Binary') {
             steps {
-               nexusPublisher nexusInstanceId: 'nexus-on-ec2', nexusRepositoryId: 'Jenkins-ci-maven-nexus-repo', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'web/target/webapp-0.5.0-SNAPSHOT.war']], mavenCoordinate: [artifactId: 'webapp', groupId: 'com.mycompany', packaging: 'war', version: '1.0']]]
+              nexusPublisher nexusInstanceId: 'releases3', nexusRepositoryId: 'JenkinsCiMavenNexusRepo', packages: [[$class: 'MavenPackage', mavenAssetList: [], mavenCoordinate: [artifactId: 'core', groupId: 'base', packaging: 'war', version: '1.0']]]
             }
         }
 		
