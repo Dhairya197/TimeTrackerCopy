@@ -1,13 +1,13 @@
 pipeline {
     agent any
     tools {
-        maven "maven3.8.3"
+        maven "Maven3.8.3"
     }
     stages {
         stage('Build') {
             steps {
                 echo 'THis is Build step'
-                git branch: 'develop', credentialsId: 'GithubCredentials', url: 'https://github.com/sdakinedi/time-tracker.git'
+                git branch: 'feature1', url: 'https://github.com/Dhairya197/TimeTrackerCopy.git'
             }
         }
         
