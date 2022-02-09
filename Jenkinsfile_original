@@ -1,13 +1,13 @@
 pipeline {
     agent any
     tools {
-        maven "maven3.8.1"
+        maven "Maven3.8.3"
     }
     stages {
         stage('Build') {
             steps {
                 echo 'THis is Build step'
-                git branch: 'develop', credentialsId: 'GithubCredentials', url: 'https://github.com/sdakinedi/time-tracker.git'
+                git branch: 'develop', credentialsId: 'GithubCredentials', url: 'https://github.com/Dhairya197/TimeTrackerCopy.git'
             }
         }
 		
@@ -30,7 +30,7 @@ pipeline {
 		stage('Static Analysis using Warning plugin') {
             steps {
                 echo 'This will run Static Analysis'
-                 recordIssues healthy: 20, qualityGates: [[threshold: 100, type: 'TOTAL', unstable: false], [threshold: 50, type: 'TOTAL', unstable: true]], tools: [findBugs(useRankAsPriority: true), checkStyle(), pmdParser()], unhealthy: 80
+                 recordIssues(tools: [checkStyle(), findBugs(useRankAsPriority: true), pmdParser()])
             }
         }
         
