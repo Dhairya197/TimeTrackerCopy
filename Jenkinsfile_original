@@ -30,7 +30,7 @@ pipeline {
 		stage('Static Analysis using Warning plugin') {
             steps {
                 echo 'This will run Static Analysis'
-                 recordIssues(tools: [checkStyle(), findBugs(useRankAsPriority: true), pmdParser()])
+                 recordIssues healthy: 20, qualityGates: [[threshold: 100, type: 'TOTAL', unstable: false], [threshold: 40, type: 'TOTAL', unstable: false]], tools: [checkStyle(), findBugs(useRankAsPriority: true), pmdParser()], unhealthy: 80
             }
         }
         
