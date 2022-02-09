@@ -29,7 +29,7 @@ public class Tracker {
 
     public TimeEntry get(int index) {
         try {
-        	System.out.println(1/2);
+        	
         } catch (Exception e) {
         	System.out.println(e.getMessage());
         }
