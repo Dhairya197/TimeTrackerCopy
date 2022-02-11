@@ -35,9 +35,9 @@ pipeline {
 		
 		stage('Upload the Binary') {
             steps {
-               nexusArtifactUploader artifacts: [[artifactId: 'time-tracker-parent', classifier: '', file: 'target/webapp-0.5.0-SNAPSHOT.war', type: 'war']],
-	       credentialsId: 'nexus', groupId: 'training.taylor.time-tracker', nexusUrl: 'localhost:8081', nexusVersion: 'nexus3',
-	       protocol: 'http', repository: 'JenkinsCICDRepo', version: '0.5.0-SNAPSHOT'
+              nexusPublisher nexusInstanceId: 'releases3', nexusRepositoryId: 'JenkinsCICDRepo', 
+	      packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'web/target/webapp-0.5.0-SNAPSHOT.war']],
+	      mavenCoordinate: [artifactId: 'time-tracker-parent', groupId: 'training.taylor.time-tracker', packaging: 'war', version: '0.5.0-SNAPSHOT']]]
                   }
         }
 		
