@@ -29,9 +29,15 @@ pipeline {
             steps {
                 echo 'This will Package'
                  sh 'mvn package'
-                 archiveArtifacts artifacts: '**/*.war', followSymlinks: false
+                 
             }
         }
+	
+	stage('Archive the Artifact') {
+steps {
+archiveArtifacts artifacts: '**/*.war', followSymlinks: false
+}
+}
 		
 		
 
