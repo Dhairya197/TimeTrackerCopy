@@ -33,18 +33,6 @@ pipeline {
             }
         }
 		
-		stage('Upload the Binary') {
-            steps {
-             nexusPublisher nexusInstanceId: 'releases3', nexusRepositoryId: 'JenkinsCICDRepo', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'web/target/webapp-0.5.0-SNAPSHOT.war']], mavenCoordinate: [artifactId: 'time-tracker-parent', groupId: 'training.taylor.time-tracker', packaging: 'war', version: '0.5.0-SNAPSHOT']]]
-                  }
-        }
-		
-       stage('Deploy') {
-            steps {
-               echo 'This will Package'
-                 deploy adapters: [tomcat9(credentialsId: 'TOMCAT_DEPLOYER', path: '', url: 'http://35.157.189.28:8090/')], contextPath: null, war: '**/*.war'
-           }
-        }
 		
 
     }
